@@ -29,7 +29,7 @@ Para la instalación deberán seguirse los siguientes pasos:
 
 ```sh
 git clone 
-cd .\git_entrega\Entrega1-Girotti\
+cd .\Entrega1-Girotti\
 python manage.py runserver
 ```
 
