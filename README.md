@@ -28,9 +28,9 @@ El programa se esquematiza de la siguiente manera:
 Para la instalación deberán seguirse los siguientes pasos:
 
 ```sh
-git clone 
-cd .\Entrega1-Girotti\
-python manage.py runserver
+git clone: https://github.com/girottialexis/Entrega1-Girotti.git
+ingresar por powershell: cd .\Entrega1-Girotti\
+correr el servidor: python manage.py runserver
 ```
 
 ## Funcionamiento
