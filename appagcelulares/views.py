@@ -1,8 +1,8 @@
 from ast import Return
 from django.shortcuts import render
 from django.http import HttpResponse
-from appagcelulares.models import Cliente
-from appagcelulares.forms import Clienteformulario
+from appagcelulares.models import Cliente, Equipo, Fichatecnica, Familiar
+from appagcelulares.forms import Clienteformulario, Equipoformulario, Fichatecnicaformulario, Familiarformulario
 
 
 # Create your views here.
@@ -34,10 +34,49 @@ def clientes(request):
             return render(request, "appagcelulares/clientes.html", {"formulario": cliente_form })
 
 def equipos(request):
-    return render(request, "appagcelulares/equipos.html")
+        equipo = Equipo.objects.all()
+
+        if request.method == "POST":
+
+            equipo = Equipoformulario(request.POST)
+            print(equipo)
+
+            if equipo.is_valid():
+                data =  equipo.cleaned_data
+
+                equipo_nuevo = Equipo(data['modelo_equipo'], data['numero_telefono'])
+                equipo_nuevo.save()
+
+            equipo_form = Equipoformulario()
+            return render(request, "appagcelulares/equipos.html", {"formulario":equipo_form})
+        else:
+            
+           
+            equipo_form = Equipoformulario()
+            return render(request, "appagcelulares/equipos.html", {"formulario":equipo_form})
+
 
 def fichastecnicas(request):
-    return render(request, "appagcelulares/fichastecnicas.html")
+        ficha = Fichatecnica.objects.all()
+
+        if request.method == "POST":
+
+            ficha = Fichatecnicaformulario(request.POST)
+            print(ficha)
+
+            if ficha.is_valid():
+                data =  ficha.cleaned_data
+
+                ficha_nueva = Fichatecnica(data['numero_ficha'], data['fecha_recibido'], data['problema_tecnico'], data['reparado'], data['fecha_entregado'])
+                ficha_nueva.save()
+
+            ficha_form = Fichatecnicaformulario()
+            return render(request, "appagcelulares/fichastecnicas.html", {"formulario":ficha_form})
+        else:
+            
+           
+            ficha_form = Fichatecnicaformulario()
+            return render(request, "appagcelulares/fichastecnicas.html", {"formulario":ficha_form})
 
 def buscarclientes(request):
     
@@ -51,3 +90,32 @@ def buscarclientes(request):
         return render(request, "appagcelulares/buscarcliente.html", {"cliente": cliente[0]})
     
     return render(request, "appagcelulares/buscarcliente.html")
+
+
+def plantilla(request):
+    
+    return render(request, "appagcelulares/plantilla.html")
+
+
+def familiar(request):
+         familiar = Familiar.objects.all()
+
+         if request.method == "POST":
+
+             familiar = Familiarformulario(request.POST)
+             print(familiar)
+
+             if familiar.is_valid():
+                 data =  familiar.cleaned_data
+
+                 familiar_nuevo = Familiar(data['nombre'], data['apellido'], data['dni'], data['fecha_nac'])
+                 familiar_nuevo.save()
+
+             familiar_form = Familiarformulario()
+             return render(request, "appagcelulares/familiar.html", {"formulario": familiar_form })
+
+         else:
+            
+           
+             familiar_form = Familiarformulario()
+             return render(request, "appagcelulares/familiar.html", {"formulario": familiar_form })

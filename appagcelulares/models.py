@@ -17,3 +17,10 @@ class Fichatecnica(models.Model):
     problema_tecnico = models.CharField(max_length=300)
     reparado = models.BooleanField()
     fecha_entregado = models.DateField(0000-00-00)
+
+class Familiar(models.Model):
+    nombre = models.CharField(max_length=40)
+    apellido = models.CharField(max_length=40)
+    dni = models.IntegerField(primary_key=True)
+    fecha_nac = models.DateField()
+    

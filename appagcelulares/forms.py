@@ -21,3 +21,9 @@ class Fichatecnicaformulario(forms.Form):
     reparado = forms.BooleanField()
     fecha_entregado = forms.DateField()
 
+class Familiarformulario(forms.Form):
+
+    nombre = forms.CharField(max_length=40)
+    apellido = forms.CharField(max_length=40)
+    dni = forms.IntegerField()
+    fecha_nac = forms.DateField()
