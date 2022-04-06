@@ -98,6 +98,7 @@ def plantilla(request):
 
 
 def familiar(request):
+         
          familiar = Familiar.objects.all()
 
          if request.method == "POST":
@@ -112,7 +113,7 @@ def familiar(request):
                  familiar_nuevo.save()
 
              familiar_form = Familiarformulario()
-             return render(request, "appagcelulares/familiar.html", {"formulario": familiar_form })
+             return render(request, "appagcelulares/familiar.html", {"formulario": familiar_form, "familiar": familiar})
 
          else:
             

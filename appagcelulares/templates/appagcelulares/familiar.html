@@ -15,7 +15,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="{% static 'appagcelulares2/css/styles.css' %}" rel="stylesheet" />
+        <link href="{% static 'appagcelulares/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -59,17 +59,36 @@
             </table>
             <input type="submit" value="Dar Alta">
         </form>
-  
-        {% comment %} {% for integrante in formulario %}
-
-            <p>{{ familiar.nombre }}</p>
-            <p>{{ familiar.apellido }}</p>
-            <p>{{ familiar.dni }}</p>
-            <p>{{ familiar.fecha_nac }}</p>
-
-        {% endfor %} {% endcomment %}
-
     </div>
+    
+
+    <div class="container mt-5">
+        <table class="table" center>
+            <thead >
+                <tr>
+
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Fecha de Nacimiento</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for familiar in familiar_form %}
+                <tr>
+                <td>{{ familiar.nombre }}</td>
+                <td>{{ familiar.apellido }}</td>
+                <td>{{ familiar.dni }}</td>
+                <td>{{ familiar.fecha_nac }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+    
+    </div>
+    
 </section>
 <!-- Footer-->
 <footer class="footer py-4">
